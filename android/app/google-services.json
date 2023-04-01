@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "170926163038",
+    "project_id": "octobus-bus-project",
+    "storage_bucket": "octobus-bus-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:170926163038:android:76597f07969e1d3c55e0cf",
+        "android_client_info": {
+          "package_name": "com.example.octobus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "170926163038-thoot98skpl8uj5hir2cshq1ri6l062r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO0UdhNK-_QJzh0HGlWheFfB8mEmQwads"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "170926163038-thoot98skpl8uj5hir2cshq1ri6l062r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "170926163038-mii7jr3dhjgks00bgb1prl7942jdaiec.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.octobus"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
