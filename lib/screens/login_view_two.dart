@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:octobus/main.dart';
-
 import '../firebase_options.dart';
 
 class LoginDemo extends StatefulWidget {
@@ -37,7 +35,7 @@ class _LoginDemoState extends State<LoginDemo> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Login Page"),
+        title: const Text("Login"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -91,13 +89,13 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
             ),
             TextButton(
-              onPressed: () {
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
-              },
-              child: const Text(
-                'Forgot Password',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.all(20),
               ),
+              child: const Text('Forgot Password'),
+              onPressed: () {
+                //TODO
+              },
             ),
             Container(
               height: 50,
@@ -131,14 +129,25 @@ class _LoginDemoState extends State<LoginDemo> {
                 },
                 child: const Text(
                   'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                  ),
                 ),
               ),
             ),
             const SizedBox(
               height: 130,
             ),
-            const Text('New User? Create Account')
+            TextButton(
+              child: const Text("New User? Create Account"),
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/register/',
+                  (route) => false,
+                );
+              },
+            )
           ],
         ),
       ),
