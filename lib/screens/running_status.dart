@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ScreenFare extends StatelessWidget {
-  const ScreenFare({super.key});
+class RunningStatus extends StatelessWidget {
+  const RunningStatus({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,17 +20,10 @@ class ScreenFare extends StatelessWidget {
                     //controller: _username,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Enter Start Point"),
+                        hintText: "Enter the Bus Name"),
                   ),
                   const SizedBox(
                     height: 20,
-                  ),
-                  TextFormField(
-                    //controller: _password,
-                    obscureText: true,
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        hintText: "Enter End Point"),
                   ),
                   const SizedBox(
                     height: 20,
@@ -39,8 +32,8 @@ class ScreenFare extends StatelessWidget {
                       onPressed: () {
                         //checkLogin(context);
                       },
-                      icon: const Icon(Icons.monetization_on_outlined),
-                      label: const Text("Calculate Fare")),
+                      icon: const Icon(Icons.directions_bus),
+                      label: const Text("Find Running Status")),
                 ],
               ),
             ),

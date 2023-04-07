@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ScreenOne extends StatelessWidget {
   const ScreenOne({super.key});
@@ -13,7 +11,8 @@ class ScreenOne extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Container(
-          decoration: BoxDecoration(color: Color.fromARGB(66, 255, 252, 252)),
+          decoration:
+              const BoxDecoration(color: Color.fromARGB(66, 255, 252, 252)),
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -39,8 +38,8 @@ class ScreenOne extends StatelessWidget {
                     onPressed: () {
                       //checkLogin(context);
                     },
-                    icon: Icon(Icons.check),
-                    label: Text("Login")),
+                    icon: const Icon(Icons.check),
+                    label: const Text("Login")),
               ],
             ),
           ),

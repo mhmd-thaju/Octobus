@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ScreenSearch extends StatelessWidget {
   const ScreenSearch({super.key});
@@ -12,7 +10,8 @@ class ScreenSearch extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Container(
-            decoration: BoxDecoration(color: Color.fromARGB(66, 255, 252, 252)),
+            decoration:
+                const BoxDecoration(color: Color.fromARGB(66, 255, 252, 252)),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -40,8 +39,8 @@ class ScreenSearch extends StatelessWidget {
                       onPressed: () {
                         //checkLogin(context);
                       },
-                      icon: Icon(Icons.search),
-                      label: Text("Search Bus")),
+                      icon: const Icon(Icons.search),
+                      label: const Text("Search Bus")),
                 ],
               ),
             ),
