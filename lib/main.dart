@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:octobus/screens/login_view_two.dart';
 import 'package:octobus/screens/screenFare.dart';
 import 'package:octobus/screens/screenHome.dart';
 import 'package:octobus/screens/screenSearch.dart';
@@ -20,7 +21,7 @@ void main() {
         ),
         home: const MainView(),
         routes: {
-          '/login/': (context) => const LoginView(),
+          '/login/': (context) => const LoginDemo(),
           '/register/': (context) => const RegisterView(),
           '/main/': (context) => const MainView(),
         }),
