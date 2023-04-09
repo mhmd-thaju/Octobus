@@ -36,6 +36,20 @@ class _LoginDemoState extends State<LoginDemo> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Login"),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                '/main/',
+                (route) => false,
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

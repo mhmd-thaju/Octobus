@@ -41,14 +41,10 @@ class HomePage extends StatelessWidget {
         switch (snapshot.connectionState) {
           case ConnectionState.done:
             final user = FirebaseAuth.instance.currentUser;
-            if (user != null) {
-              if (user.emailVerified) {
-                return const MainView();
-              } else {
-                return const VerifyEmailView();
-              }
-            } else {
+            if (user == null) {
               return const LoginView();
+            } else {
+              return const MainView();
             }
           default:
             return const CircularProgressIndicator();
@@ -90,7 +86,7 @@ class _MainViewState extends State<MainView> {
         title: const Text("OctoBus"),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.account_circle,
               color: Colors.white,
             ),

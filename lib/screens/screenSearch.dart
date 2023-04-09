@@ -30,7 +30,7 @@ class ScreenSearch extends StatelessWidget {
                     obscureText: true,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: "Enter Destination"),
+                        hintText: "Enter End Point"),
                   ),
                   const SizedBox(
                     height: 20,

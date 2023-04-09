@@ -16,31 +16,7 @@ class ScreenOne extends StatelessWidget {
           child: Center(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                TextFormField(
-                  //controller: _username,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), hintText: "Usename"),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                TextFormField(
-                  //controller: _password,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), hintText: "Password"),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton.icon(
-                    onPressed: () {
-                      //checkLogin(context);
-                    },
-                    icon: const Icon(Icons.check),
-                    label: const Text("Login")),
-              ],
+              children: [Text("Hello")],
             ),
           ),
         ),
