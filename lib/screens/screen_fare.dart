@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_database';
 
 /* void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,7 +26,10 @@ class _ScreenFareState extends State<ScreenFare> {
     });
   }
 
-  String selected_start_point = "";
+  String selected_start_point = "0";
+  String selected_end_point = "0";
+
+  final firebaseRef = FirebaseDatabase.instance.reference().child("FareTable");
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +86,7 @@ class _ScreenFareState extends State<ScreenFare> {
                           print(startingvalue);
                         },
                         value: selected_start_point,
-                        isExpanded: false,
+                        isExpanded: true,
                       );
                     },
                   ),
@@ -94,6 +98,47 @@ class _ScreenFareState extends State<ScreenFare> {
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: "Enter End Point"),
+                  ),
+                  StreamBuilder<QuerySnapshot>(
+                    stream: FirebaseFirestore.instance
+                        .collection("FareTable")
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      List<DropdownMenuItem> endPoint = [];
+                      if (!snapshot.hasData) {
+                        const CircularProgressIndicator();
+                      } else {
+                        final ending_points =
+                            snapshot.data?.docs.reversed.toList();
+                        endPoint.add(
+                          DropdownMenuItem(
+                            value: "0",
+                            child: Text('Enter End Point'),
+                          ),
+                        );
+                        for (var ending in ending_points!) {
+                          endPoint.add(
+                            DropdownMenuItem(
+                              value: ending.id,
+                              child: Text(
+                                ending['EndPoint'],
+                              ),
+                            ),
+                          );
+                        }
+                      }
+                      return DropdownButton(
+                        items: endPoint,
+                        onChanged: (endingvalue) {
+                          setState(() {
+                            selected_end_point = endingvalue;
+                          });
+                          print(endingvalue);
+                        },
+                        value: selected_end_point,
+                        isExpanded: true,
+                      );
+                    },
                   ),
                   const SizedBox(
                     height: 20,
