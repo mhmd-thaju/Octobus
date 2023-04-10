@@ -133,13 +133,13 @@ class _LoginDemoState extends State<LoginDemo> {
                       email: email,
                       password: password,
                     );
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/main/',
+                      (route) => false,
+                    );
                   } on FirebaseAuthException catch (e) {
                     print("Error $e.code");
                   }
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/main/',
-                    (route) => false,
-                  );
                 },
                 child: const Text(
                   'Login',

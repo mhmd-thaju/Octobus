@@ -118,13 +118,13 @@ class _RegisterViewState extends State<RegisterView> {
                       email: email,
                       password: password,
                     );
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/login/',
+                      (route) => false,
+                    );
                   } on Exception {
                     print("Error");
                   }
-                  Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/main/',
-                    (route) => false,
-                  );
                 },
                 child: const Text('Register',
                     style: TextStyle(

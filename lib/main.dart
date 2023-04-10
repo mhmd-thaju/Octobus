@@ -2,13 +2,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:octobus/screens/login_view_two.dart';
-import 'package:octobus/screens/screenFare.dart';
-import 'package:octobus/screens/screenHome.dart';
-import 'package:octobus/screens/screenSearch.dart';
+import 'package:octobus/screens/screen_fare.dart';
+import 'package:octobus/screens/screen_home.dart';
+import 'package:octobus/screens/screen_search.dart';
 import 'package:octobus/screens/running_status.dart';
 import 'package:octobus/screens/login_view.dart';
 import 'package:octobus/screens/register_view.dart';
-import 'package:octobus/screens/verify_email_view.dart';
 import 'firebase_options.dart';
 
 void main() {
@@ -65,8 +64,6 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     ScreenOne(),
     ScreenSearch(),
