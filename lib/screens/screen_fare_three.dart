@@ -49,7 +49,7 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
           String tempStart = docSnapshot.data()['StartPoint'];
           String tempEnd = docSnapshot.data()['EndPoint'];
           localData.add(docSnapshot.data());
-          print(localData);
+          //print(localData);
 
           DropDownValueModel temp1 = DropDownValueModel(
             name: tempStart,
@@ -78,7 +78,8 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
     return null;
   }
 
-  Future<void>? search(selectedStart, selectedEnd) async {
+  Future<int>? search(selectedStart, selectedEnd) async {
+    CircularProgressIndicator();
     var matchNames = localData.where((element) =>
         element["StartPoint"] == selectedStart &&
         element["EndPoint"] == selectedEnd);
@@ -86,8 +87,10 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
     if (matchNames.isNotEmpty) {
       var fare = matchNames.first["Fare"];
       print("The fare is $fare");
+      return fare;
     } else {
       print("No matching route found!");
+      return 0;
     }
   }
 
@@ -135,9 +138,10 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
                       'TO',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 50,
-                          color: Colors.blue),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 50,
+                        color: Colors.blue,
+                      ),
                     ),
                   ),
                   DropDownTextField(
@@ -163,11 +167,49 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () {
-                      search(selectedStart.dropDownValue?.value,
-                          selectedEnd.dropDownValue?.value);
+                      setState(() {
+                        search(selectedStart.dropDownValue?.value,
+                            selectedEnd.dropDownValue?.value);
+                      });
                     },
                     icon: const Icon(Icons.paid_outlined),
                     label: const Text("Calculate Fare"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(50),
+                    child: FutureBuilder(
+                      future: search(selectedStart.dropDownValue?.value,
+                          selectedEnd.dropDownValue?.value),
+                      builder:
+                          (BuildContext context, AsyncSnapshot<int> snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const CircularProgressIndicator();
+                        } else if (snapshot.hasError) {
+                          return Text(
+                            'Error: ${snapshot.error}',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 50,
+                              color: Colors.black,
+                            ),
+                          );
+                        } else if (snapshot.hasData) {
+                          return Text(
+                            'The fare is\n\nRs. ${snapshot.data}',
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Colors.black,
+                            ),
+                          );
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      },
+                    ),
                   ),
                 ],
               ),
