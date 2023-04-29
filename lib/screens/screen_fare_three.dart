@@ -195,7 +195,7 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
                               color: Colors.black,
                             ),
                           );
-                        } else if (snapshot.hasData) {
+                        } else if (snapshot.hasData && snapshot.data != 0) {
                           return Text(
                             'The fare is\n\nRs. ${snapshot.data}',
                             textAlign: TextAlign.center,
