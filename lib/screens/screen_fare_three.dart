@@ -3,14 +3,14 @@ import 'package:dropdown_textfield/dropdown_textfield.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-class ScreenFareTwo extends StatefulWidget {
-  const ScreenFareTwo({super.key});
+class ScreenFareThree extends StatefulWidget {
+  const ScreenFareThree({super.key});
 
   @override
-  State<ScreenFareTwo> createState() => _ScreenFareTwoState();
+  State<ScreenFareThree> createState() => _ScreenFareThreeState();
 }
 
-class _ScreenFareTwoState extends State<ScreenFareTwo> {
+class _ScreenFareThreeState extends State<ScreenFareThree> {
   List<DropDownValueModel> startPoints = [];
   List<DropDownValueModel> endPoints = [];
 
@@ -45,9 +45,11 @@ class _ScreenFareTwoState extends State<ScreenFareTwo> {
       (querySnapshot) {
         print("Successfully completed");
         for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
+          //print('${docSnapshot.id} => ${docSnapshot.data()}');
           String tempStart = docSnapshot.data()['StartPoint'];
           String tempEnd = docSnapshot.data()['EndPoint'];
+          localData.add(docSnapshot.data());
+          print(localData);
 
           DropDownValueModel temp1 = DropDownValueModel(
             name: tempStart,
@@ -67,8 +69,8 @@ class _ScreenFareTwoState extends State<ScreenFareTwo> {
             endPoints.add(temp2);
           }
 
-          print(startPoints);
-          print(endPoints);
+          //print(startPoints);
+          //print(endPoints);
         }
       },
       onError: (e) => print("Error completing: $e"),
@@ -76,46 +78,17 @@ class _ScreenFareTwoState extends State<ScreenFareTwo> {
     return null;
   }
 
-  Future<void>? sample2() {
-    db.collection('FareTable').get().then(
-      (querySnapshot) {
-        print("Successfully completed");
-        for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
-          String tempStart = docSnapshot.data()['StartPoint'];
-          String tempEnd = docSnapshot.data()['EndPoint'];
-          int tempFare = docSnapshot.data()['Fare'];
+  Future<void>? search(selectedStart, selectedEnd) async {
+    var matchNames = localData.where((element) =>
+        element["StartPoint"] == selectedStart &&
+        element["EndPoint"] == selectedEnd);
 
-          List tempList = [tempStart, tempEnd, tempFare];
-
-          localData.add(tempList);
-
-          print(startPoints);
-          print(endPoints);
-        }
-      },
-      onError: (e) => print("Error completing: $e"),
-    );
-    return null;
-  }
-
-  Future<void>? query(selectedStart, selectedEnd) {
-    db
-        .collection('FareTable')
-        .where('StartPoint', isEqualTo: selectedStart)
-        .where('EndPoint', isEqualTo: selectedEnd)
-        .get()
-        .then(
-      (querySnapshot) {
-        print("Query success");
-        for (var docSnapshot in querySnapshot.docs) {
-          queryFare = docSnapshot.data()['Fare'];
-          print(queryFare);
-        }
-      },
-      onError: (e) => print('Error completing: $e'),
-    );
-    return null;
+    if (matchNames.isNotEmpty) {
+      var fare = matchNames.first["Fare"];
+      print("The fare is $fare");
+    } else {
+      print("No matching route found!");
+    }
   }
 
   @override
@@ -189,7 +162,10 @@ class _ScreenFareTwoState extends State<ScreenFareTwo> {
                     dropDownList: endPoints,
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: () {
+                      search(selectedStart.dropDownValue?.value,
+                          selectedEnd.dropDownValue?.value);
+                    },
                     icon: const Icon(Icons.paid_outlined),
                     label: const Text("Calculate Fare"),
                   ),

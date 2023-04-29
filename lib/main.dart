@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:octobus/screens/login_view_two.dart';
-import 'package:octobus/screens/screen_fare_two.dart';
+import 'package:octobus/screens/screen_fare_three.dart';
 import 'package:octobus/screens/screen_home.dart';
 import 'package:octobus/screens/screen_search.dart';
 import 'package:octobus/screens/running_status.dart';
@@ -68,7 +68,7 @@ class _MainViewState extends State<MainView> {
     ScreenOne(),
     ScreenSearch(),
     RunningStatus(),
-    ScreenFareTwo(),
+    ScreenFareThree(),
   ];
   void _onItemTapped(int index) {
     setState(() {
