@@ -44,6 +44,9 @@ dependencies:
   dropdown_textfield: ^1.0.8
   dropdown_search: ^5.0.6
   shared_preferences: ^2.0.15
+  google_maps_flutter: ^2.0.6
+  location: ^4.3.0
+  permission_handler: ^8.1.4+2
 
 
 dev_dependencies:

@@ -10,6 +10,8 @@ import 'package:octobus/screens/login_view.dart';
 import 'package:octobus/screens/register_view.dart';
 import 'firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:octobus/screens/mymap.dart';
+import 'package:octobus/screens/location.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,11 +67,11 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    ScreenOne(),
-    ScreenSearch(),
-    ScreenFareThree(),
-    RunningStatus(),
+  static List<Widget> _widgetOptions = <Widget>[
+    const ScreenOne(),
+    const ScreenSearch(),
+    const ScreenFareThree(),
+    MyApp(),
   ];
   void _onItemTapped(int index) {
     setState(() {
