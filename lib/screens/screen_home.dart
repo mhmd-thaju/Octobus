@@ -11,9 +11,13 @@ class ScreenOne extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               color: Color.fromARGB(66, 255, 252, 252),
+              image: DecorationImage(
+                  image: AssetImage("asset/images/octobus.png"),
+                  fit: BoxFit.fitWidth,
+                  opacity: 199),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.grey.withOpacity(0.2),
+                  color: Colors.white.withOpacity(01.0),
                   spreadRadius: 5,
                   blurRadius: 7,
                   offset: Offset(0, 3),
@@ -24,6 +28,9 @@ class ScreenOne extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
+                SizedBox(
+                  height: 33,
+                ),
                 Text(
                   "Welcome To OctoBus ",
                   style: TextStyle(
@@ -37,8 +44,10 @@ class ScreenOne extends StatelessWidget {
                 SizedBox(
                   height: 250,
                 ),
-                Text("Our Team :- "),
-                Text(''' 
+                Text("Our Team :- ",
+                    style: TextStyle(color: Color.fromARGB(255, 5, 36, 99))),
+                Text(
+                  ''' 
                 Anjaly Krishna --
                 Muhammed Thajudheen --
                 Shyam Kiran --
@@ -46,7 +55,9 @@ class ScreenOne extends StatelessWidget {
                 
 
                 Supervising by:-    Luttapi😈(SK)
-                '''),
+                ''',
+                  style: TextStyle(color: Color.fromARGB(255, 5, 36, 99)),
+                ),
               ],
             ),
           ),
