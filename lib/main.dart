@@ -68,8 +68,8 @@ class _MainViewState extends State<MainView> {
   static const List<Widget> _widgetOptions = <Widget>[
     ScreenOne(),
     ScreenSearch(),
-    RunningStatus(),
     ScreenFareThree(),
+    RunningStatus(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -132,16 +132,16 @@ class _MainViewState extends State<MainView> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.directions_bus),
-            label: 'Running Status',
+            icon: Icon(Icons.directions_bus_filled_rounded),
+            label: 'Bus Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.paid_outlined),
             label: 'Fare',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.track_changes),
+            label: 'Live Tracking',
           ),
         ],
         currentIndex: _selectedIndex,
