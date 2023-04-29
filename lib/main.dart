@@ -9,6 +9,7 @@ import 'package:octobus/screens/running_status.dart';
 import 'package:octobus/screens/login_view.dart';
 import 'package:octobus/screens/register_view.dart';
 import 'firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +19,7 @@ void main() {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const MainView(),
+        home: const LoginDemo(),
         routes: {
           '/login/': (context) => const LoginDemo(),
           '/register/': (context) => const RegisterView(),
@@ -82,18 +83,42 @@ class _MainViewState extends State<MainView> {
       appBar: AppBar(
         title: const Text("OctoBus"),
         actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.account_circle,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                '/login/',
-                (route) => false,
-              );
+          // IconButton(
+          //   icon: const Icon(
+          //     Icons.account_circle,
+          //     color: Colors.white,
+          //   ),
+          //   onPressed: () {
+          //     Navigator.of(context).pushNamedAndRemoveUntil(
+          //       '/login/',
+          //       (route) => false,
+          //     );
+          //   },
+          // ),
+          PopupMenuButton<MenuAction>(
+            onSelected: (value) async {
+              switch (value) {
+                case MenuAction.logout:
+                  final shouldLogout = await showLogOutDialog(context);
+                  if (shouldLogout) {
+                    await FirebaseAuth.instance.signOut();
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/login/',
+                      (_) => false,
+                    );
+                  }
+                  break;
+              }
             },
-          ),
+            itemBuilder: (context) {
+              return const [
+                PopupMenuItem<MenuAction>(
+                  value: MenuAction.logout,
+                  child: Text("Log Out"),
+                )
+              ];
+            },
+          )
         ],
       ),
       body: Center(
