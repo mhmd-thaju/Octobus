@@ -78,18 +78,15 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
     return null;
   }
 
-  Future<int>? search(selectedStart, selectedEnd) async {
-    CircularProgressIndicator();
+  Future<int> search(selectedStart, selectedEnd) async {
     var matchNames = localData.where((element) =>
         element["StartPoint"] == selectedStart &&
         element["EndPoint"] == selectedEnd);
 
     if (matchNames.isNotEmpty) {
       var fare = matchNames.first["Fare"];
-      print("The fare is $fare");
       return fare;
     } else {
-      print("No matching route found!");
       return 0;
     }
   }
@@ -112,7 +109,7 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
                     height: 20,
                   ),
                   DropDownTextField(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     controller: selectedStart,
                     clearOption: true,
                     enableSearch: true,
