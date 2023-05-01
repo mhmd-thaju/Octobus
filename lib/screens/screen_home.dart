@@ -4,18 +4,15 @@ class ScreenOne extends StatelessWidget {
   const ScreenOne({super.key});
 
   Widget _selectedArea(
-      {required Color color,
-      required String title,
-      required String subtitile,
-      required String image}) {
+      {required Color color, required String title, required String image}) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 10.0),
+      margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
       padding: EdgeInsets.only(left: 10),
-      height: 220,
-      width: 150,
+      height: 160,
+      width: 100,
       decoration: BoxDecoration(
         color: color,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -23,23 +20,16 @@ class ScreenOne extends StatelessWidget {
         children: [
           Image(
             image: AssetImage(image),
-            width: 125,
-            height: 150,
+            width: 90,
+            height: 110,
           ),
           Text(
             title,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               color: Colors.blue,
             ),
           ),
-          SizedBox(
-            height: 5,
-          ),
-          Text(
-            subtitile,
-            style: TextStyle(fontSize: 15, color: Colors.black),
-          )
         ],
       ),
     );
@@ -86,75 +76,90 @@ class ScreenOne extends StatelessWidget {
                     SizedBox(
                       height: 12,
                     ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(12, 12, 12, 0),
-                      height: 554.635,
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30)),
-                          image: DecorationImage(
-                              image: AssetImage("asset/images/octobus.png"),
-                              fit: BoxFit.fitWidth,
-                              opacity: 199),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.white.withOpacity(01.0),
-                              spreadRadius: 5,
-                              blurRadius: 1,
-                              offset: Offset(0, 3),
-                            )
-                          ]),
-                      child: Column(
-                        children: [
-                          Text(
-                            "Our Team :-",
-                            style: TextStyle(
-                                fontSize: 18,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Row(
+                    Expanded(
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(12, 12, 12, 0),
+                        //height: //554.635,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(30),
+                                topRight: Radius.circular(30)),
+                            image: DecorationImage(
+                                image: AssetImage("asset/images/octobus.png"),
+                                fit: BoxFit.fitWidth,
+                                opacity: 199),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white.withOpacity(01.0),
+                                spreadRadius: 5,
+                                blurRadius: 1,
+                                offset: Offset(0, 3),
+                              )
+                            ]),
+                        child: Column(
+                          children: [
+                            Text(
+                              "Our Team :-",
+                              style: TextStyle(
+                                  fontSize: 18,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(1),
+                              child: Column(
                                 children: [
-                                  _selectedArea(
-                                      color: Colors.white.withOpacity(0.7),
-                                      subtitile: "3488",
-                                      title: "Aasim Mohammed",
-                                      image: 'asset/images/Aasim.jpg'),
-                                  _selectedArea(
-                                      color: Colors.white.withOpacity(0.7),
-                                      subtitile: "3414",
-                                      title: "Shyam Kiran",
-                                      image: 'asset/images/shyam.jpg'),
-                                  _selectedArea(
-                                      color: Colors.white.withOpacity(0.7),
-                                      subtitile: "3401",
-                                      title: "Anjali Krishna",
-                                      image: 'asset/images/anjali.jpg'),
-                                  _selectedArea(
-                                      color: Colors.white.withOpacity(0.7),
-                                      subtitile: "3408",
-                                      title: '''Muhammed Thajudheen''',
-                                      image: 'asset/images/thaju.jpeg'),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      _selectedArea(
+                                          color: Colors.white.withOpacity(0.3),
+                                          title: "Aasim Mohammed",
+                                          image: 'asset/images/Aasim.jpg'),
+                                      _selectedArea(
+                                          color: Colors.white.withOpacity(0.3),
+                                          title: "Shyam Kiran",
+                                          image: 'asset/images/shyam.jpg'),
+                                    ],
+                                  ),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      _selectedArea(
+                                          color: Colors.white.withOpacity(0.3),
+                                          title: "Anjaly Krishna",
+                                          image: 'asset/images/anjali.jpg'),
+                                      _selectedArea(
+                                          color: Colors.white.withOpacity(0.3),
+                                          title: '''Muhammed Thajudheen''',
+                                          image: 'asset/images/thaju.jpeg'),
+                                    ],
+                                  )
                                 ],
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 200,
-                          ),
-                          Text(
-                              '''App is currently in development Please wait for new features in the future updates''')
-                        ],
+                            Expanded(
+                              child: Container(
+                                //height: double.Finite,
+                                alignment: FractionalOffset.bottomCenter,
+                                child: Text(
+                                  '''App is currently in development Please wait for new features in the future updates''',
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 170, 48, 40)),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -168,22 +173,3 @@ class ScreenOne extends StatelessWidget {
     );
   }
 }
-
-
-
-// Column(
-//                 children: const [
-//                   Text(
-//                     "Welcome to OctoBus",
-//                     style: TextStyle(
-//                       fontFamily: 'LobsterTwo',
-//                       fontSize: 32,
-//                       fontStyle: FontStyle.italic,
-//                     ),
-//                   ),
-//                   SizedBox(
-//                     height: 50,
-//                   ),
-//                   Text("adasd")
-//                 ],
-//               ),
