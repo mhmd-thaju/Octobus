@@ -44,8 +44,10 @@ dependencies:
   dropdown_textfield: ^1.0.8
   dropdown_search: ^5.0.6
   shared_preferences: ^2.0.15
+  google_maps_flutter: ^2.0.6
+  location: ^4.3.0
+  permission_handler: ^8.1.4+2
   intl: ^0.18.1
-
 
 
 dev_dependencies:
@@ -85,12 +87,15 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+    # family: Schyler
+     # fonts:
+      #  - asset: fonts/Schyler-Regular.ttf
+       # - asset: fonts/Schyler-Italic.ttf
+        #  style: italic
+    - family: LobsterTwo
+      fonts:
+        - asset: asset/fonts/Lobster_Two/LobsterTwo-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

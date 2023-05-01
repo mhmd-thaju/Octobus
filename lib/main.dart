@@ -9,6 +9,9 @@ import 'package:octobus/screens/running_status.dart';
 import 'package:octobus/screens/login_view.dart';
 import 'package:octobus/screens/register_view.dart';
 import 'firebase_options.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:octobus/screens/mymap.dart';
+import 'package:octobus/screens/location.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -64,11 +67,11 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
-  static const List<Widget> _widgetOptions = <Widget>[
-    ScreenOne(),
-    ScreenSearchTwo(),
-    RunningStatus(),
-    ScreenFareThree(),
+  static List<Widget> _widgetOptions = <Widget>[
+    const ScreenOne(),
+    const ScreenSearchTwo(),
+    const ScreenFareThree(),
+    MyApp(),
   ];
   void _onItemTapped(int index) {
     setState(() {
@@ -131,16 +134,16 @@ class _MainViewState extends State<MainView> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.directions_bus),
-            label: 'Running Status',
+            icon: Icon(Icons.directions_bus_filled_rounded),
+            label: 'Bus Schedule',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.paid_outlined),
             label: 'Fare',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.track_changes),
+            label: 'Live Tracking',
           ),
         ],
         currentIndex: _selectedIndex,
