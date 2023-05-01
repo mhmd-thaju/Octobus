@@ -79,9 +79,13 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
   }
 
   Future<int> search(selectedStart, selectedEnd) async {
-    var matchNames = localData.where((element) =>
-        element["StartPoint"] == selectedStart &&
-        element["EndPoint"] == selectedEnd);
+    var matchNames = localData.where(
+      (element) =>
+          element["StartPoint"] == selectedStart &&
+          element["EndPoint"] == selectedEnd,
+    );
+
+    print("matchNames = $matchNames");
 
     if (matchNames.isNotEmpty) {
       var fare = matchNames.first["Fare"];
@@ -163,11 +167,13 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
                     dropDownList: endPoints,
                   ),
                   ElevatedButton.icon(
-                    onPressed: () {
-                      setState(() {
-                        search(selectedStart.dropDownValue?.value,
-                            selectedEnd.dropDownValue?.value);
-                      });
+                    onPressed: () async {
+                      setState(
+                        () {
+                          search(selectedStart.dropDownValue?.value,
+                              selectedEnd.dropDownValue?.value);
+                        },
+                      );
                     },
                     icon: const Icon(Icons.paid_outlined),
                     label: const Text("Calculate Fare"),
@@ -177,8 +183,10 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
                     child: FutureBuilder(
                       future: search(selectedStart.dropDownValue?.value,
                           selectedEnd.dropDownValue?.value),
-                      builder:
-                          (BuildContext context, AsyncSnapshot<int> snapshot) {
+                      builder: (
+                        BuildContext context,
+                        AsyncSnapshot<int> snapshot,
+                      ) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const CircularProgressIndicator();
