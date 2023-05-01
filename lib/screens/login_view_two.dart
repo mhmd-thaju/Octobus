@@ -36,20 +36,6 @@ class _LoginDemoState extends State<LoginDemo> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Login"),
-        // actions: <Widget>[
-        //   IconButton(
-        //     icon: const Icon(
-        //       Icons.home,
-        //       color: Colors.white,
-        //     ),
-        //     onPressed: () {
-        //       Navigator.of(context).pushNamedAndRemoveUntil(
-        //         '/main/',
-        //         (route) => false,
-        //       );
-        //     },
-        //   ),
-        // ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -108,7 +94,10 @@ class _LoginDemoState extends State<LoginDemo> {
               ),
               child: const Text('Forgot Password'),
               onPressed: () {
-                //TODO
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/register/',
+                  (route) => false,
+                );
               },
             ),
             Container(

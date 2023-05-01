@@ -42,17 +42,17 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 _getLocation();
               },
-              child: Text('add my location')),
+              child: Text('Add My Location')),
           TextButton(
               onPressed: () {
                 _listenLocation();
               },
-              child: Text('enable live location')),
+              child: Text('Enable Live Location')),
           TextButton(
               onPressed: () {
                 _stopListening();
               },
-              child: Text('stop live location')),
+              child: Text('Stop Live Location')),
           Expanded(
               child: StreamBuilder(
             stream:

@@ -5,12 +5,9 @@ import 'package:octobus/screens/login_view_two.dart';
 import 'package:octobus/screens/screen_fare_three.dart';
 import 'package:octobus/screens/screen_home.dart';
 import 'package:octobus/screens/screen_search_two.dart';
-import 'package:octobus/screens/running_status.dart';
 import 'package:octobus/screens/login_view.dart';
 import 'package:octobus/screens/register_view.dart';
 import 'firebase_options.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:octobus/screens/mymap.dart';
 import 'package:octobus/screens/location.dart';
 
 void main() {
@@ -67,7 +64,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
-  static List<Widget> _widgetOptions = <Widget>[
+  final List<Widget> _widgetOptions = <Widget>[
     const ScreenOne(),
     const ScreenSearchTwo(),
     const ScreenFareThree(),
@@ -85,18 +82,6 @@ class _MainViewState extends State<MainView> {
       appBar: AppBar(
         title: const Text("OctoBus"),
         actions: <Widget>[
-          // IconButton(
-          //   icon: const Icon(
-          //     Icons.account_circle,
-          //     color: Colors.white,
-          //   ),
-          //   onPressed: () {
-          //     Navigator.of(context).pushNamedAndRemoveUntil(
-          //       '/login/',
-          //       (route) => false,
-          //     );
-          //   },
-          // ),
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
               switch (value) {

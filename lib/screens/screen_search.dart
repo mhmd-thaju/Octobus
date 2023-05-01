@@ -38,9 +38,7 @@ class _ScreenSearchState extends State<ScreenSearch> {
   Future<void>? sample() {
     db.collection('BusDetails').get().then(
       (querySnapshot) {
-        print("Successfully completed");
         for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
           String tempStart = docSnapshot.data()['StartPoint'];
           String tempEnd = docSnapshot.data()['EndPoint'];
 
@@ -48,28 +46,15 @@ class _ScreenSearchState extends State<ScreenSearch> {
           localData.add(docSnapshot.data());
           }
 
-          print("localData = $localData");
-          print("localData.length = ${localData.length}");
-
           DropDownValueModel temp1 = DropDownValueModel(
             name: "$tempStart -> $tempEnd",
             value: tempStart,
-          );
-
-          print(temp1);
-
-          // DropDownValueModel temp2 = DropDownValueModel(
-          //   name: tempEnd,
-          //   value: tempEnd,
-          // );
+          );        
 
           if (travelPoints.contains(temp1) != true) {
-            print("temp 1 = $temp1");
             travelPoints.add(temp1);
           }
 
-          print("travelpoints = $travelPoints");
-          //print(endPoints);
         }
       },
       onError: (e) => print("Error completing: $e"),
@@ -78,7 +63,6 @@ class _ScreenSearchState extends State<ScreenSearch> {
   }
 
   Future<List<dynamic>>? searchBus(selectedJourney) async {
-    print("inside searchbus");
 
     var matchNames = localData.where(
       (element) => element["StartPoint"] == selectedJourney,
@@ -129,7 +113,6 @@ class _ScreenSearchState extends State<ScreenSearch> {
                   ),
                   ElevatedButton.icon(
                     onPressed: () async {
-                      print("onpressedlocaldata: $localData");
                       setState(
                         () {
                           searchBus(selectedJourney.dropDownValue?.value);

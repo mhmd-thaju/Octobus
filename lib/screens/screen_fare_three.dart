@@ -43,13 +43,10 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
   Future<void>? sample() {
     db.collection('FareTable').get().then(
       (querySnapshot) {
-        print("Successfully completed");
         for (var docSnapshot in querySnapshot.docs) {
-          //print('${docSnapshot.id} => ${docSnapshot.data()}');
           String tempStart = docSnapshot.data()['StartPoint'];
           String tempEnd = docSnapshot.data()['EndPoint'];
           localData.add(docSnapshot.data());
-          //print(localData);
 
           DropDownValueModel temp1 = DropDownValueModel(
             name: tempStart,
@@ -69,8 +66,6 @@ class _ScreenFareThreeState extends State<ScreenFareThree> {
             endPoints.add(temp2);
           }
 
-          //print(startPoints);
-          //print(endPoints);
         }
       },
       onError: (e) => print("Error completing: $e"),

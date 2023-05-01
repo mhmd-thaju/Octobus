@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
       ),
       body: Column(
         children: [
-          Text("Please verify your email"),
+          const Text("Please verify your email"),
           TextButton(
             onPressed: () async {
               final user = FirebaseAuth.instance.currentUser;

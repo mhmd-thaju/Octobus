@@ -41,35 +41,27 @@ class _ScreenSearchTwoState extends State<ScreenSearchTwo> {
   Future<void>? sample() {
     db.collection('BusDetails').get().then(
       (querySnapshot) {
-        //print("Successfully completed");
         for (var docSnapshot in querySnapshot.docs) {
           print('${docSnapshot.id} => ${docSnapshot.data()}');
 
           String tempStart = docSnapshot.data()['StartPoint'];
           String tempEnd = docSnapshot.data()['EndPoint'];
 
-          if (!localData.any((data) =>
-              DeepCollectionEquality().equals(data, docSnapshot.data()))) {
+          if (!localData.any((data) => const DeepCollectionEquality()
+              .equals(data, docSnapshot.data()))) {
             localData.add(docSnapshot.data());
           }
 
           localData = localData.toSet().toList();
 
-          print("localData = $localData");
-          //print("localdata.length = ${localData.length}");
           DropDownValueModel temp1 = DropDownValueModel(
             name: "$tempStart -> $tempEnd",
             value: [tempStart, tempEnd],
           );
 
-          //print("temp1 = $temp1");
-
           if (travelPoints.contains(temp1) != true) {
-            //print("temp 1 = $temp1");
             travelPoints.add(temp1);
           }
-
-          //print("travelpoints = $travelPoints");
         }
       },
       onError: (e) => print("Error completing: $e"),
@@ -78,15 +70,11 @@ class _ScreenSearchTwoState extends State<ScreenSearchTwo> {
   }
 
   Future<dynamic> searchBus(arg1, arg2) async {
-    //print("inside searchbus");
-
     var matchNames = localData.where(
       (element) => element["StartPoint"] == arg1 && element["EndPoint"] == arg2,
     );
-    //print("matchnames = $matchNames");
 
     List<dynamic> matchNamesList = matchNames.toList();
-    //print("matchnameslist = $matchNamesList");
 
     if (matchNames.isNotEmpty) {
       return matchNamesList;
@@ -170,10 +158,10 @@ class _ScreenSearchTwoState extends State<ScreenSearchTwo> {
                             snapshot.data.sort((a, b) {
                               DateTime aStartTime = a['StartTime']
                                   .toDate()
-                                  .add(Duration(hours: 5, minutes: 30));
+                                  .add(const Duration(hours: 5, minutes: 30));
                               DateTime bStartTime = b['StartTime']
                                   .toDate()
-                                  .add(Duration(hours: 5, minutes: 30));
+                                  .add(const Duration(hours: 5, minutes: 30));
                               return aStartTime.compareTo(bStartTime);
                             });
                             return ListView.builder(
@@ -185,10 +173,10 @@ class _ScreenSearchTwoState extends State<ScreenSearchTwo> {
 
                                 var startTime = busDetails['StartTime']
                                     .toDate()
-                                    .add(Duration(hours: 5, minutes: 30));
+                                    .add(const Duration(hours: 5, minutes: 30));
                                 var endTime = busDetails['EndTime']
                                     .toDate()
-                                    .add(Duration(hours: 5, minutes: 30));
+                                    .add(const Duration(hours: 5, minutes: 30));
                                 var startTimeString =
                                     DateFormat('MMM d, y h:mm a')
                                         .format(startTime);

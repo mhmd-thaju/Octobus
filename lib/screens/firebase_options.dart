@@ -25,7 +25,6 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     Firebase.initializeApp().whenComplete(() {
-      print("completed");
       setState(() {});
     });
     _requestPermission();
@@ -42,24 +41,24 @@ class _MyAppState extends State<MyApp> {
               onPressed: () {
                 _getLocation();
               },
-              child: Text('add my location')),
+              child: const Text('Add My Location')),
           TextButton(
               onPressed: () {
                 _listenLocation();
               },
-              child: Text('enable live location')),
+              child: const Text('Enable Live Location')),
           TextButton(
               onPressed: () {
                 _stopListening();
               },
-              child: Text('stop live location')),
+              child: const Text('Stop Live Location')),
           Expanded(
               child: StreamBuilder(
             stream:
                 FirebaseFirestore.instance.collection('location').snapshots(),
             builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               }
               return ListView.builder(
                   itemCount: snapshot.data?.docs.length,
@@ -71,7 +70,7 @@ class _MyAppState extends State<MyApp> {
                         children: [
                           Text(snapshot.data!.docs[index]['latitude']
                               .toString()),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           Text(snapshot.data!.docs[index]['longitude']
@@ -79,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                         ],
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.directions),
+                        icon: const Icon(Icons.directions),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) =>
