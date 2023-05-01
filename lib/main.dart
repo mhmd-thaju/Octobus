@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:octobus/screens/login_view_two.dart';
 import 'package:octobus/screens/screen_fare_three.dart';
 import 'package:octobus/screens/screen_home.dart';
-import 'package:octobus/screens/screen_search.dart';
+import 'package:octobus/screens/screen_search_two.dart';
 import 'package:octobus/screens/running_status.dart';
 import 'package:octobus/screens/login_view.dart';
 import 'package:octobus/screens/register_view.dart';
@@ -69,7 +69,7 @@ class _MainViewState extends State<MainView> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     const ScreenOne(),
-    const ScreenSearch(),
+    const ScreenSearchTwo(),
     const ScreenFareThree(),
     MyApp(),
   ];
