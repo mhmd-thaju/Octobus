@@ -70,7 +70,7 @@ class ScreenOne extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      '''OctoBus is a Bus Monitoring App developed to asisst people those who uses bus form transportation in "Kerala"''',
+                      '''OctoBus is a Bus Monitoring App developed to assist those who use the bus form of transportation in Kerala''',
                       style: TextStyle(fontSize: 18, color: Colors.white),
                     ),
                     SizedBox(
@@ -101,7 +101,7 @@ class ScreenOne extends StatelessWidget {
                         child: Column(
                           children: [
                             Text(
-                              "Our Team :-",
+                              "Our Team",
                               style: TextStyle(
                                   fontSize: 18,
                                   fontStyle: FontStyle.italic,
@@ -147,17 +147,17 @@ class ScreenOne extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            Expanded(
-                              child: Container(
-                                //height: double.Finite,
-                                alignment: FractionalOffset.bottomCenter,
-                                child: Text(
-                                  '''App is currently in development Please wait for new features in the future updates''',
-                                  style: TextStyle(
-                                      color: Color.fromARGB(255, 170, 48, 40)),
-                                ),
-                              ),
-                            )
+                            // Expanded(
+                            //   child: Container(
+                            //     //height: double.Finite,
+                            //     alignment: FractionalOffset.bottomCenter,
+                            //     child: Text(
+                            //       '''App is currently in development Please wait for new features in the future updates''',
+                            //       style: TextStyle(
+                            //           color: Color.fromARGB(255, 170, 48, 40)),
+                            //     ),
+                            //   ),
+                            // )
                           ],
                         ),
                       ),
