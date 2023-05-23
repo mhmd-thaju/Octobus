@@ -5,4 +5,4 @@ Aasim, Anjaly, Thajudheen, Shyam
 
 [Application Screenshots](./App%20Screenshots)
 
-[Project Presentation](./OctoBus%20Project%20Presentation)
+[Project Presentation](./OctoBus%20Project%20Presentation.pdf)
